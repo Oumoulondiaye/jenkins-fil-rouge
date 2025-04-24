@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_CREDENTIALS = 'jnk-creds' // ID Jenkins Credentials
-        DOCKERHUB_USER = 'cheikh9708'       // ton nom d’utilisateur Docker Hub
+        DOCKERHUB_USER = 'mormbathie'       // ton nom d’utilisateur Docker Hub
     }
 
     stages {
@@ -61,8 +61,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: "${DOCKER_HUB_CREDENTIALS}", usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker push $DOCKER_USER/mon-backend:latest
-                        docker push $DOCKER_USER/mon-frontend:latest
+                        docker push $DOCKER_USER/odc_backend:latest
+                        docker push $DOCKER_USER/odc_frontend:latest
                     '''
                 }
             }
